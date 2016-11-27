@@ -13,9 +13,12 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var dataTableView: UITableView?
     
     let manager = GroceryDataManager.shared
+    var selectedItems: NSOrderedSet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedItems = manager.data[manager.selectedIndex].items
     }
     
     //every time view is about the appear (other is one-time)
@@ -26,19 +29,18 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
         //manager.data = manager.fetch()
         dataTableView?.reloadData()
     }
-    
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return manager.data.count
+        return (selectedItems?.count)!
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = manager.data[indexPath.row].name
+        let item = (selectedItems?[indexPath.row] as! GroceryItem)
         
-        //use the item list for the count to display
-        let items = manager.data[indexPath.row].items
-        cell.detailTextLabel?.text = "Quantity: \(items?.count)"
+        cell.textLabel?.text = item.name
+        cell.detailTextLabel?.text = "Quantity: \(item.quantity)"
         
         return cell
     }

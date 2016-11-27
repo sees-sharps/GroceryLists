@@ -20,6 +20,7 @@
 		A1AA9DEC1DEA79ED004EDEC4 /* GroceryList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9DE81DEA79ED004EDEC4 /* GroceryList+CoreDataProperties.swift */; };
 		A1AA9DEE1DEA8072004EDEC4 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9DED1DEA8072004EDEC4 /* AddListViewController.swift */; };
 		A1AA9DF01DEB6634004EDEC4 /* GroceryItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9DEF1DEB6634004EDEC4 /* GroceryItemsViewController.swift */; };
+		A1AA9DF21DEB6A92004EDEC4 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9DF11DEB6A92004EDEC4 /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A1AA9DE81DEA79ED004EDEC4 /* GroceryList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroceryList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A1AA9DED1DEA8072004EDEC4 /* AddListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		A1AA9DEF1DEB6634004EDEC4 /* GroceryItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroceryItemsViewController.swift; sourceTree = "<group>"; };
+		A1AA9DF11DEB6A92004EDEC4 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				A125F0F51DEA542300692E19 /* GroceryListViewController.swift */,
 				A1AA9DEF1DEB6634004EDEC4 /* GroceryItemsViewController.swift */,
 				A1AA9DED1DEA8072004EDEC4 /* AddListViewController.swift */,
+				A1AA9DF11DEB6A92004EDEC4 /* AddItemViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				A1AA9DEE1DEA8072004EDEC4 /* AddListViewController.swift in Sources */,
 				A1AA9DEA1DEA79ED004EDEC4 /* GroceryItem+CoreDataProperties.swift in Sources */,
 				A125F10A1DEA584200692E19 /* GroceryDataManager.swift in Sources */,
+				A1AA9DF21DEB6A92004EDEC4 /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,22 +19,27 @@ class GroceryDataManager {
     var managedObjectContext: NSManagedObjectContext?
     
     var data: [GroceryList]
+    var selectedIndex: Int
     
     private init() {
         //set up the test data for now
-        
         data = [GroceryList]()
         
+        //init selected index
+        selectedIndex = -1
+    }
+    
+    func loadData() {
         //set up the list
-        let listItem = GroceryList()
+        let listItem = NSEntityDescription.insertNewObject(forEntityName: "GroceryList", into: managedObjectContext!) as! GroceryList
         listItem.name = "Costco";
         
         //set up a couple of items
-        let grocItem = GroceryItem()
+        let grocItem = NSEntityDescription.insertNewObject(forEntityName: "GroceryItem", into: managedObjectContext!) as! GroceryItem
         grocItem.name = "String Cheese"
         grocItem.quantity = 1;
         
-        let grocItem2 = GroceryItem()
+        let grocItem2 = NSEntityDescription.insertNewObject(forEntityName: "GroceryItem", into: managedObjectContext!) as! GroceryItem
         grocItem2.name = "Avocados"
         grocItem2.quantity = 3
         
@@ -44,15 +49,15 @@ class GroceryDataManager {
         data.append(listItem)
         
         //set up the list
-        let listItem2 = GroceryList()
-        listItem.name = "Marc's";
+        let listItem2 = NSEntityDescription.insertNewObject(forEntityName: "GroceryList", into: managedObjectContext!) as! GroceryList
+        listItem2.name = "Marc's";
         
         //set up a couple of items
-        let grocItem3 = GroceryItem()
+        let grocItem3 = NSEntityDescription.insertNewObject(forEntityName: "GroceryItem", into: managedObjectContext!) as! GroceryItem
         grocItem3.name = "Deodorant"
         grocItem3.quantity = 2;
         
-        let grocItem4 = GroceryItem()
+        let grocItem4 = NSEntityDescription.insertNewObject(forEntityName: "GroceryItem", into: managedObjectContext!) as! GroceryItem
         grocItem4.name = "Rockstar Energy Drink"
         grocItem4.quantity = 4
         
@@ -60,10 +65,6 @@ class GroceryDataManager {
         listItem2.addToItems(grocItem4)
         
         data.append(listItem2)
-    }
-    
-    func set(managedObjectContext: NSManagedObjectContext) {
-        self.managedObjectContext = managedObjectContext
     }
     
     func fetch<T: NSManagedObject>() -> [T] {
@@ -76,6 +77,7 @@ class GroceryDataManager {
                 print(error)
             }
         }
+        
         return result ?? []
     }
     
@@ -85,7 +87,10 @@ class GroceryDataManager {
     }
     
     func createList(name: (String)) throws {
-        guard let ctx = managedObjectContext else {
+        
+        guard let ctx = managedObjectContext
+            else {
+
             throw DataError.BadManagedObjectContext("The managed object context was nil")
         }
         guard let entity = NSEntityDescription.entity(forEntityName: "GroceryList", in: ctx) else {
@@ -98,7 +103,7 @@ class GroceryDataManager {
         try? save()
     }
     
-    func createItem(data: (name: String, quantity: Int16)) throws {
+    func createItem(dataItem: (name: String, quantity: Int16)) throws {
         guard let ctx = managedObjectContext else {
             throw DataError.BadManagedObjectContext("The managed object context was nil")
         }
@@ -107,8 +112,8 @@ class GroceryDataManager {
         }
         
         let obj = GroceryItem(entity: entity, insertInto: ctx)
-        obj.name = data.name
-        obj.quantity = data.quantity
+        obj.name = dataItem.name
+        obj.quantity = dataItem.quantity
         
         try? save()
     }

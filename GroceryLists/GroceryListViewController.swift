@@ -16,6 +16,9 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //load data in hopes that context will be present. probably not and I'm wasting more time.
+        manager.loadData()
     }
     
     //every time view is about the appear (other is one-time)
@@ -23,7 +26,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewWillAppear(animated)
         
         //todo: put in init of manager?. Do this when we have real data.
-        //manager.data = manager.fetch()
+        manager.data = manager.fetch()
         dataTableView?.reloadData()
     }
     
@@ -41,6 +44,12 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         cell.detailTextLabel?.text = "\(items?.count) Items"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: UIView.areAnimationsEnabled)
+        
+        manager.selectedIndex = indexPath.row
     }
 }
 
