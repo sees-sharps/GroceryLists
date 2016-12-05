@@ -17,16 +17,15 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //load data in hopes that context will be present. probably not and I'm wasting more time.
-        manager.loadData()
+        //load up the data for the app
+        
     }
     
     //every time view is about the appear (other is one-time)
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //todo: put in init of manager?. Do this when we have real data.
-        manager.data = manager.fetch()
+        manager.loadData()
         dataTableView?.reloadData()
     }
     
@@ -40,8 +39,8 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         cell.textLabel?.text = manager.data[indexPath.row].name
         
         //use the item list for the count to display
-        let items = manager.data[indexPath.row].items
-        cell.detailTextLabel?.text = "\(items?.count) Items"
+        let itemCount = manager.data[indexPath.row].items?.count
+        cell.detailTextLabel?.text = "\(itemCount!) Items"
         
         return cell
     }

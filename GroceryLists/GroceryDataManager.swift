@@ -30,6 +30,10 @@ class GroceryDataManager {
     }
     
     func loadData() {
+        data = fetch()
+    }
+    
+    func loadFakeData() {
         //set up the list
         let listItem = NSEntityDescription.insertNewObject(forEntityName: "GroceryList", into: managedObjectContext!) as! GroceryList
         listItem.name = "Costco";
@@ -67,7 +71,7 @@ class GroceryDataManager {
         data.append(listItem2)
     }
     
-    func fetch<T: NSManagedObject>() -> [T] {
+    private func fetch<T: NSManagedObject>() -> [T] {
         var result: [T]? = nil
         managedObjectContext?.performAndWait { [weak self] in
             do {
@@ -114,6 +118,9 @@ class GroceryDataManager {
         let obj = GroceryItem(entity: entity, insertInto: ctx)
         obj.name = dataItem.name
         obj.quantity = dataItem.quantity
+        
+        //add this item to the selected list! 
+        data[selectedIndex].addToItems(obj)
         
         try? save()
     }
