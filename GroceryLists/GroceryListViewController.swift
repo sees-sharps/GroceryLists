@@ -45,10 +45,16 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if var destination = segue.destination as? ListSelector {
+            destination.selectedIndex = dataTableView?.indexPathForSelectedRow?.row
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: UIView.areAnimationsEnabled)
-        
-        manager.selectedIndex = indexPath.row
     }
 }
 

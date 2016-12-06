@@ -13,20 +13,20 @@ enum DataError: Error {
     case BadEntity(String)
 }
 
+protocol ListSelector {
+    var selectedIndex : Int? {get set}
+}
+
 class GroceryDataManager {
     
     static var shared: GroceryDataManager = GroceryDataManager()
     var managedObjectContext: NSManagedObjectContext?
     
     var data: [GroceryList]
-    var selectedIndex: Int
     
     private init() {
         //set up the test data for now
         data = [GroceryList]()
-        
-        //init selected index
-        selectedIndex = -1
     }
     
     func loadData() {
@@ -107,7 +107,7 @@ class GroceryDataManager {
         try? save()
     }
     
-    func createItem(dataItem: (name: String, quantity: Int16)) throws {
+    func createItem(dataItem: (name: String, quantity: Int16, parentIndex: Int)) throws {
         guard let ctx = managedObjectContext else {
             throw DataError.BadManagedObjectContext("The managed object context was nil")
         }
@@ -120,7 +120,7 @@ class GroceryDataManager {
         obj.quantity = dataItem.quantity
         
         //add this item to the selected list! 
-        data[selectedIndex].addToItems(obj)
+        data[dataItem.parentIndex].addToItems(obj)
         
         try? save()
     }

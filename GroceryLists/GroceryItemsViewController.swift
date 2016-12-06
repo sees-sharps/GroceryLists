@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ListSelector {
+    internal var selectedIndex: Int?
     @IBOutlet var dataTableView: UITableView?
     
     let manager = GroceryDataManager.shared
@@ -18,7 +18,7 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedItems = manager.data[manager.selectedIndex].items
+        selectedItems = manager.data[selectedIndex!].items
     }
     
     //every time view is about the appear (other is one-time)
@@ -28,6 +28,14 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
         //todo: put in init of manager?. Do this when we have real data.
         //manager.data = manager.fetch()
         dataTableView?.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if var destination = segue.destination as? ListSelector {
+            destination.selectedIndex = selectedIndex
+        }
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

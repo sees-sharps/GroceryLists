@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController {
+class AddItemViewController: UIViewController, ListSelector {
 
+    internal var selectedIndex: Int?
     let manager = GroceryDataManager.shared
     
     @IBOutlet weak var itemNameField: UITextField!
@@ -18,7 +19,7 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        itemNameField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +29,7 @@ class AddItemViewController: UIViewController {
 
     @IBAction func add() {
         do {
-            try manager.createItem(dataItem: (name: itemNameField.text!, quantity: Int16(itemQtyField.text!)!))
+            try manager.createItem(dataItem: (name: itemNameField.text!, quantity: Int16(itemQtyField.text!)!, parentIndex: selectedIndex!))
         }
         catch {
             print(error)
