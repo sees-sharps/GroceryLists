@@ -35,8 +35,4 @@ class AddListViewController: UIViewController {
         
         dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
     }
-    
-    @IBAction func cancelClick() {
-        dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
-    }
 }

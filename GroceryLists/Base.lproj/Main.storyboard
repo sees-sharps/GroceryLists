@@ -42,24 +42,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="PLA-Ii-xct" detailTextLabel="9tx-wF-gbh" rowHeight="21" style="IBUITableViewCellStyleValue1" id="XVb-ew-V1g">
                                         <rect key="frame" x="0.0" y="28" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XVb-ew-V1g" id="7wT-8U-uRo">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="20"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PLA-Ii-xct">
-                                                    <rect key="frame" x="15" y="0.0" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="0.0" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9tx-wF-gbh">
-                                                    <rect key="frame" x="55" y="0.0" width="285" height="21"/>
+                                                    <rect key="frame" x="296" y="0.0" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -130,7 +130,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelClick" destination="qn5-aY-EfH" eventType="touchUpInside" id="Tub-ZB-HDa"/>
+                                    <action selector="close" destination="qn5-aY-EfH" eventType="touchUpInside" id="Oh5-Tu-KgD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n70-mT-ney">
@@ -145,6 +145,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="0Jw-ZT-bZZ" firstAttribute="centerX" secondItem="K4p-QA-8Of" secondAttribute="centerX" id="1BV-3Y-AtX"/>
                             <constraint firstItem="K4p-QA-8Of" firstAttribute="trailing" secondItem="n70-mT-ney" secondAttribute="trailing" id="4ex-3k-q99"/>
@@ -159,12 +160,20 @@
                             <constraint firstItem="0Jw-ZT-bZZ" firstAttribute="leading" secondItem="Xaz-Vo-d0B" secondAttribute="leadingMargin" constant="98" id="Xux-yM-Kxo"/>
                             <constraint firstAttribute="bottom" secondItem="1mM-bJ-rcX" secondAttribute="bottom" constant="20" symbolic="YES" id="ggQ-Dd-8Tj"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Yi5-af-eJV" appends="YES" id="64u-Ia-YIf"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="listNameField" destination="K4p-QA-8Of" id="JdL-xj-0Uo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHX-FL-ogv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Yi5-af-eJV">
+                    <connections>
+                        <action selector="dismissKeyboard" destination="qn5-aY-EfH" id="huK-3v-wEx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="658.39999999999998" y="6.746626686656672"/>
         </scene>
@@ -184,24 +193,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="5AL-Te-3P7" detailTextLabel="Tis-Ki-vOI" rowHeight="21" style="IBUITableViewCellStyleValue1" id="NWm-dM-k7Y">
                                         <rect key="frame" x="0.0" y="28" width="375" height="21"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NWm-dM-k7Y" id="aZn-fK-96q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5AL-Te-3P7">
-                                                    <rect key="frame" x="15" y="0.0" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="0.0" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tis-Ki-vOI">
-                                                    <rect key="frame" x="55" y="0.0" width="305" height="21"/>
+                                                    <rect key="frame" x="316" y="0.0" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -276,7 +285,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelClick" destination="qc8-Ot-rMv" eventType="touchUpInside" id="boF-Lj-tzG"/>
+                                    <action selector="close" destination="qc8-Ot-rMv" eventType="touchUpInside" id="xu5-96-KWe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaZ-9u-RQz">
@@ -291,6 +300,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Vbs-N5-GuS" firstAttribute="trailing" secondItem="UgC-ug-uk0" secondAttribute="trailingMargin" id="338-c8-RQY"/>
                             <constraint firstItem="Vbs-N5-GuS" firstAttribute="trailing" secondItem="qaZ-9u-RQz" secondAttribute="trailing" id="66b-3i-Xid"/>
@@ -305,6 +315,9 @@
                             <constraint firstItem="qaZ-9u-RQz" firstAttribute="width" secondItem="JNj-S6-lsJ" secondAttribute="width" constant="-21" id="q8O-RC-whD"/>
                             <constraint firstAttribute="bottom" secondItem="JNj-S6-lsJ" secondAttribute="bottom" constant="20" symbolic="YES" id="qgx-9y-9PV"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vOh-FK-YzF" appends="YES" id="VCB-qh-cLl"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="itemNameField" destination="Vbs-N5-GuS" id="tKJ-fM-nVH"/>
@@ -312,6 +325,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcn-Yy-QaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="vOh-FK-YzF">
+                    <connections>
+                        <action selector="dismissKeyboard" destination="qc8-Ot-rMv" id="oji-ka-aUm"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="658" y="734"/>
         </scene>

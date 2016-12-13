@@ -20,6 +20,7 @@ class AddItemViewController: UIViewController, ListSelector {
         super.viewDidLoad()
 
         itemNameField.becomeFirstResponder()
+        itemQtyField.keyboardType = UIKeyboardType.numberPad
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +38,5 @@ class AddItemViewController: UIViewController, ListSelector {
         
         dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
     }
-    
-    @IBAction func cancelClick() {
-        dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
-    }
+
 }
