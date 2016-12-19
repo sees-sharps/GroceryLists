@@ -28,3 +28,11 @@ extension UIViewController: CloseableController {
         dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
     }
 }
+
+extension UIViewController {
+    func prepareForListSelector(for segue: UIStoryboardSegue, dataTableView: UITableView?) {
+        if var destination = segue.destination as? ListSelector {
+            destination.selectedIndex = dataTableView?.indexPathForSelectedRow?.row
+        }
+    }
+}

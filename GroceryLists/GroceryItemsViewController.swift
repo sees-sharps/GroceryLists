@@ -25,7 +25,6 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //todo: put in init of manager?. Do this when we have real data.
         //manager.data = manager.fetch()
         dataTableView?.reloadData()
     }
@@ -33,9 +32,7 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if var destination = segue.destination as? ListSelector {
-            destination.selectedIndex = selectedIndex
-        }
+        prepareForListSelector(for: segue, dataTableView: dataTableView)
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
