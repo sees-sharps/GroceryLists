@@ -19,7 +19,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         
         //load up the data for the app
         
-    }
+    } 
     
     //every time view is about the appear (other is one-time)
     override func viewWillAppear(_ animated: Bool) {

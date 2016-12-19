@@ -34,5 +34,5 @@ extension UIViewController {
         if var destination = segue.destination as? ListSelector {
             destination.selectedIndex = dataTableView?.indexPathForSelectedRow?.row
         }
-    }
+    } 
 }

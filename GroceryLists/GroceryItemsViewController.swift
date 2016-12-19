@@ -31,7 +31,6 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
         prepareForListSelector(for: segue, dataTableView: dataTableView)
     }
 
