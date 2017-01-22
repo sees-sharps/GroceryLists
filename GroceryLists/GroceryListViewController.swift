@@ -60,7 +60,13 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        prepareForListSelector(for: segue, selectedIndex: (dataTableView?.indexPathForSelectedRow?.row)!)
+        
+        if (dataTableView?.indexPathForSelectedRow != nil) {
+            prepareForListSelector(for: segue, selectedIndex: (dataTableView?.indexPathForSelectedRow?.row)!)
+        }
+        else {
+            prepareForListSelector(for: segue, selectedIndex: 0)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
