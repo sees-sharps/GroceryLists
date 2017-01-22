@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroceryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroceryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet var dataTableView: UITableView?
     
@@ -45,9 +45,22 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let listToDelete = manager.data[indexPath.row]
+            confirmDelete(this: listToDelete, index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func confirmDelete(this item: GroceryList, index: Int) {
+        //todo: confirm
+        try? manager.deleteObject(obj: item, index: index)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        prepareForListSelector(for: segue, dataTableView: dataTableView)
+        prepareForListSelector(for: segue, selectedIndex: (dataTableView?.indexPathForSelectedRow?.row)!)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

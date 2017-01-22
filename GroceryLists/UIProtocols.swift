@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol ListSelector {
+    var selectedIndex : Int? {get set}
+}
+
 protocol DismissableKeyboard {
     func dismissKeyboard()
 }
@@ -30,9 +34,9 @@ extension UIViewController: CloseableController {
 }
 
 extension UIViewController {
-    func prepareForListSelector(for segue: UIStoryboardSegue, dataTableView: UITableView?) {
+    func prepareForListSelector(for segue: UIStoryboardSegue, selectedIndex: Int) {
         if var destination = segue.destination as? ListSelector {
-            destination.selectedIndex = dataTableView?.indexPathForSelectedRow?.row
+            destination.selectedIndex = selectedIndex
         }
     } 
 }

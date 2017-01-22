@@ -31,11 +31,25 @@ class GroceryItemsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        prepareForListSelector(for: segue, dataTableView: dataTableView)
+        //prepareForListSelector(for: segue, dataTableView: dataTableView)
+        prepareForListSelector(for: segue, selectedIndex: selectedIndex!)
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (selectedItems?.count)!
+    }
+    
+    func confirmDelete(this item: GroceryItem, index: Int) {
+        //todo: confirm
+        try? manager.deleteItem(obj: item, parentIndex: index)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let itemToDelete = (selectedItems?[indexPath.row] as! GroceryItem)
+            confirmDelete(this: itemToDelete, index: selectedIndex!)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

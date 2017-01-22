@@ -13,10 +13,6 @@ enum DataError: Error {
     case BadEntity(String)
 }
 
-protocol ListSelector {
-    var selectedIndex : Int? {get set}
-}
-
 class GroceryDataManager {
     
     static var shared: GroceryDataManager = GroceryDataManager()
@@ -105,6 +101,30 @@ class GroceryDataManager {
         obj.name = name
         
         try? save()
+    }
+    
+    func deleteObject(obj: NSManagedObject, index: Int) throws {
+        guard let ctx = managedObjectContext else {
+            throw DataError.BadManagedObjectContext("The managed object context was nil")
+        }
+        
+        ctx.delete(obj)
+        try? save()
+        
+        //update the data structure
+        data.remove(at: index)
+    }
+    
+    func deleteItem(obj: GroceryItem, parentIndex: Int) throws {
+        guard let ctx = managedObjectContext else {
+            throw DataError.BadManagedObjectContext("The managed object context was nil")
+        }
+        
+        ctx.delete(obj)
+        try? save()
+        
+        //update the data structure
+        data[parentIndex].removeFromItems(obj)
     }
     
     func createItem(dataItem: (name: String, quantity: Int16, parentIndex: Int)) throws {
